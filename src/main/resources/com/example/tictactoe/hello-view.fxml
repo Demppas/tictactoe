@@ -11,13 +11,10 @@
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
   </padding>
 
-  <Label fx:id="welcomeText" />
-  <Button onAction="#onHelloButtonClick" text="Hello" />
-  <Button text="Hello again" />
-   <ColorPicker>
-      <value>
-         <Color red="0.6842105388641357" green="0.11403508484363556" blue="0.11403508484363556" />
-      </value>
-   </ColorPicker>
-   <PieChart prefHeight="86.0" prefWidth="121.0" title="Piechart" />
+
+  <Button onAction="#onColorButtonAction" text="Choose color" />
+  <Button onAction="#onChooseDifficultyAction" text="Choose Difficulty"/>
+  <Button onAction="#onStartButtonAction" text="Start" />
+  <Label onMouseClicked="#onLabelAction" fx:id="colorText" />
+
 </VBox>
