@@ -1,27 +1,31 @@
 package com.example.tictactoe;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
 public class HelloController {
-    @FXML
-    private Label colorText;
 
     @FXML
-    protected void onColorButtonAction() {
-        colorText.setText("Choose color");
+    private GridPane map;
+
+    @FXML
+    private Label infoLabel;
+
+    @FXML
+    private Button startButton;
+
+    @FXML
+    private Button resetButton;
+    static int player = 0;
+
+    public HelloController(GridPane map) {
+        this.map = map;
     }
 
-    public void onLabelAction(MouseEvent mouseEvent) {
-        colorText.setText("");
+    public void initialize(){
     }
 
-    public void onStartButtonAction(ActionEvent actionEvent) {
-        //start the game
-    }
 
-    public void onChooseDifficultyAction(ActionEvent actionEvent) {
-    }
 }
