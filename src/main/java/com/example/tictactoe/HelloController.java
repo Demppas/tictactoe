@@ -17,7 +17,6 @@ public class HelloController {
     @FXML private Button resetButton;
     @FXML private Label message;
 
-    @FXML private GridPane map;
     @FXML private Button b1;
     @FXML private Button b2;
     @FXML private Button b3;
@@ -28,8 +27,26 @@ public class HelloController {
     @FXML private Button b8;
     @FXML private Button b9;
 
+    private Model model;
+
+    public HelloController() {
+        this.model = new Model();
+    }
+
     private boolean isHero = true;
     public void initialize(){
+        message.textProperty().bind(model.messageProperty());
+        heroScore.textProperty().bind(model.playerOne().scoreProperty());
+        villainScore.textProperty().bind(model.playerTwo().scoreProperty());
+        b1.textProperty().bind(model.stuffProperty().get(0));
+        b2.textProperty().bind(model.stuffProperty().get(1));
+        b3.textProperty().bind(model.stuffProperty().get(2));
+        b4.textProperty().bind(model.stuffProperty().get(3));
+        b5.textProperty().bind(model.stuffProperty().get(4));
+        b6.textProperty().bind(model.stuffProperty().get(5));
+        b7.textProperty().bind(model.stuffProperty().get(6));
+        b8.textProperty().bind(model.stuffProperty().get(7));
+        b9.textProperty().bind(model.stuffProperty().get(8));
     }
 
     public void StartButtonAction(EventHandler<ActionEvent>onAction)  {
@@ -50,19 +67,18 @@ public class HelloController {
     }
 
     public void startClicked(MouseEvent mouseEvent) {
+    hideStartButton();
+    model.setMessage("Hero's Turn");
     }
 
     public void buttonClickHandler(ActionEvent actionEvent) {
+        // om inget spel har startat skit i att göra nåt
         Button buttonClicked = (Button) actionEvent.getTarget();
-        String buttonText = buttonClicked.getText();
+        // ta reda på vilken knapp det var
+        // uppdatera modellen på positionen som motsvarar knappen
+        // sätt x eller o beroend på vilken spelare
+        // gör så att knappen inte går att trycka på
 
-       // if (isHero == true && buttonText.isEmpty()){
-       //     buttonClicked.setText("X");
-       //     isHero = false;
-       // } else (isHero == false && buttonText.isEmpty()){
-       //     buttonClicked.setText("O");
-       //     isHero = true;
-       // }
     }
 
 

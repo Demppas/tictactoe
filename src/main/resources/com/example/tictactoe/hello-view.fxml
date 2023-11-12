@@ -11,8 +11,8 @@
                 <Label fx:id="message" alignment="CENTER" layoutX="100.0" layoutY="15.0" prefHeight="25.0" prefWidth="100.0" style="-fx-font-size: 20px;" text="Welcome" />
                 <Button fx:id="startButton" layoutX="15.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#startClicked" prefHeight="26.0" prefWidth="45.0" text="Start" />
                 <Button fx:id="resetButton" layoutX="15.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#resetClicked" prefHeight="26.0" prefWidth="45.0" text="Reset" />
-            <TextField fx:id="heroScore" layoutX="240.0" layoutY="5.0" prefHeight="26.0" prefWidth="45.0" text="hero"/>
-            <TextField fx:id="villainScore" layoutX="240.0" layoutY="32.0" prefHeight="26.0" prefWidth="45.0" text="villain"/>
+            <TextField fx:id="heroScore" layoutX="240.0" layoutY="5.0" prefHeight="26.0" prefWidth="45.0" />
+            <TextField fx:id="villainScore" layoutX="240.0" layoutY="32.0" prefHeight="26.0" prefWidth="45.0" />
             </children>
         </AnchorPane>
 
