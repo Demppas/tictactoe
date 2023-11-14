@@ -8,27 +8,25 @@
     <children>
         <AnchorPane fx:id="infoBar" layoutY="-1.0" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #1ff;">
             <children>
-                <Label fx:id="message" alignment="CENTER" layoutX="100.0" layoutY="15.0" prefHeight="25.0" prefWidth="100.0" style="-fx-font-size: 20px;" text="Welcome" />
-                <Button fx:id="startButton" layoutX="15.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#startClicked" prefHeight="26.0" prefWidth="45.0" text="Start" />
-                <Button fx:id="resetButton" layoutX="15.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#resetClicked" prefHeight="26.0" prefWidth="45.0" text="Reset" />
-            <TextField fx:id="heroScore" layoutX="240.0" layoutY="5.0" prefHeight="26.0" prefWidth="45.0" />
-            <TextField fx:id="villainScore" layoutX="240.0" layoutY="32.0" prefHeight="26.0" prefWidth="45.0" />
+                <Label fx:id="message" alignment="CENTER" layoutX="68.0" layoutY="15.0" prefHeight="30.0" prefWidth="164.0" style="-fx-font-size: 20px;" text="Welcome" />
+                <Button fx:id="startButton" layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#startClicked" prefHeight="26.0" prefWidth="45.0" text="Start" />
             </children>
         </AnchorPane>
 
-        <GridPane fx:id="map" layoutY="60.0" prefHeight="300.0" prefWidth="300.0">
+        <GridPane fx:id="map" alignment="CENTER" layoutY="60.0" prefHeight="300.0" prefWidth="300.0">
             <children>
                 <Button fx:id="b1" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" />
                 <Button fx:id="b2" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="1" />
-                <Button fx:id="b3" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="2" />
+                <Button fx:id="b3" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="3" />
                 <Button fx:id="b4" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.rowIndex="1" />
                 <Button fx:id="b5" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Button fx:id="b6" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                <Button fx:id="b6" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                 <Button fx:id="b7" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.rowIndex="2" />
                 <Button fx:id="b8" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Button fx:id="b9" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                <Button fx:id="b9" onAction="#buttonClickHandler" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             </children>
          <columnConstraints>
+            <ColumnConstraints />
             <ColumnConstraints />
             <ColumnConstraints />
             <ColumnConstraints />
@@ -39,5 +37,14 @@
             <RowConstraints />
          </rowConstraints>
         </GridPane>
+      <AnchorPane fx:id="scoreBoard" layoutY="360.0" prefHeight="60.0" prefWidth="300.0" style="-fx-background-color: #1ff;">
+         <children>
+            <TextField fx:id="heroScore" layoutX="150.0" layoutY="17.0" prefHeight="26.0" prefWidth="27.0" />
+            <TextField fx:id="villainScore" layoutX="60.0" layoutY="17.0" prefHeight="26.0" prefWidth="27.0" />
+                <Button fx:id="resetButton" layoutX="237.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#resetClicked" prefHeight="26.0" prefWidth="45.0" text="Reset" />
+            <Label layoutX="14.0" layoutY="21.0" prefHeight="18.0" prefWidth="46.0" text="X Score:" />
+            <Label layoutX="97.0" layoutY="21.0" text="O Score:" />
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

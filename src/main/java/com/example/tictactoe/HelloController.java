@@ -1,6 +1,8 @@
 package com.example.tictactoe;
 
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -10,12 +12,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class HelloController {
     @FXML private TextField heroScore;
     @FXML private TextField villainScore;
     @FXML private Button startButton;
     @FXML private Button resetButton;
     @FXML private Label message;
+    @FXML private GridPane map;
 
     @FXML private Button b1;
     @FXML private Button b2;
@@ -27,30 +33,24 @@ public class HelloController {
     @FXML private Button b8;
     @FXML private Button b9;
 
-    private Model model;
-
+    protected Model model;
     public HelloController() {
         this.model = new Model();
     }
 
-    private boolean isHero = true;
     public void initialize(){
         message.textProperty().bind(model.messageProperty());
-        heroScore.textProperty().bind(model.playerOne().scoreProperty());
-        villainScore.textProperty().bind(model.playerTwo().scoreProperty());
-        b1.textProperty().bind(model.stuffProperty().get(0));
-        b2.textProperty().bind(model.stuffProperty().get(1));
-        b3.textProperty().bind(model.stuffProperty().get(2));
-        b4.textProperty().bind(model.stuffProperty().get(3));
-        b5.textProperty().bind(model.stuffProperty().get(4));
-        b6.textProperty().bind(model.stuffProperty().get(5));
-        b7.textProperty().bind(model.stuffProperty().get(6));
-        b8.textProperty().bind(model.stuffProperty().get(7));
-        b9.textProperty().bind(model.stuffProperty().get(8));
-    }
-
-    public void StartButtonAction(EventHandler<ActionEvent>onAction)  {
-        getStartButton().setOnAction(onAction);
+        heroScore.textProperty().bind(model.getPlayerX().scoreProperty());
+        villainScore.textProperty().bind(model.getPlayerO().scoreProperty());
+        b1.textProperty().bind(model.gridButtonsProperty().get(0));
+        b2.textProperty().bind(model.gridButtonsProperty().get(1));
+        b3.textProperty().bind(model.gridButtonsProperty().get(2));
+        b4.textProperty().bind(model.gridButtonsProperty().get(3));
+        b5.textProperty().bind(model.gridButtonsProperty().get(4));
+        b6.textProperty().bind(model.gridButtonsProperty().get(5));
+        b7.textProperty().bind(model.gridButtonsProperty().get(6));
+        b8.textProperty().bind(model.gridButtonsProperty().get(7));
+        b9.textProperty().bind(model.gridButtonsProperty().get(8));
     }
 
     protected Button getStartButton() {
@@ -64,25 +64,60 @@ public class HelloController {
         startButton.setVisible(false);
     }
     public void resetClicked(MouseEvent mouseEvent) {
+    model.getPlayerX().scoreProperty().set("0");
+    model.getPlayerO().scoreProperty().set("0");
     }
 
     public void startClicked(MouseEvent mouseEvent) {
     hideStartButton();
-    model.setMessage("Hero's Turn");
+    model.setMessage("Player X's Turn");
     }
 
     public void buttonClickHandler(ActionEvent actionEvent) {
-        // om inget spel har startat skit i att göra nåt
         Button buttonClicked = (Button) actionEvent.getTarget();
-        // ta reda på vilken knapp det var
-        // uppdatera modellen på positionen som motsvarar knappen
-        // sätt x eller o beroend på vilken spelare
-        // gör så att knappen inte går att trycka på
+
+        switch (buttonClicked.getId()) {
+            case "b1": buttonClicked = b1;
+                model.setPlayerSymbol(0);
+                buttonClicked.setDisable(true);
+            break;
+            case "b2": buttonClicked = b2;
+                model.setPlayerSymbol(1);
+                buttonClicked.setDisable(true);
+            break;
+            case "b3": buttonClicked = b3;
+                model.setPlayerSymbol(2);
+                buttonClicked.setDisable(true);
+            break;
+            case "b4": buttonClicked = b4;
+                model.setPlayerSymbol(3);
+                buttonClicked.setDisable(true);
+            break;
+            case "b5": buttonClicked = b5;
+                model.setPlayerSymbol(4);
+                buttonClicked.setDisable(true);
+            break;
+            case "b6": buttonClicked = b6;
+                model.setPlayerSymbol(5);
+                buttonClicked.setDisable(true);
+            break;
+            case "b7": buttonClicked = b7;
+                model.setPlayerSymbol(6);
+                buttonClicked.setDisable(true);
+            break;
+            case "b8": buttonClicked = b8;
+                model.setPlayerSymbol(7);
+                buttonClicked.setDisable(true);
+            break;
+            case "b9": buttonClicked = b9;
+                model.setPlayerSymbol(8);
+                buttonClicked.setDisable(true);
+            break;
+
+        }
+        model.isGameDone();
 
     }
-
-
-
 
 
 
