@@ -1,19 +1,13 @@
 package com.example.tictactoe;
 
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
-
-import java.util.ArrayList;
-import java.util.Map;
 
 public class HelloController {
     @FXML private TextField heroScore;
@@ -51,6 +45,8 @@ public class HelloController {
         b7.textProperty().bind(model.gridButtonsProperty().get(6));
         b8.textProperty().bind(model.gridButtonsProperty().get(7));
         b9.textProperty().bind(model.gridButtonsProperty().get(8));
+        model.getPlayerX().scoreProperty().set("0");
+        model.getPlayerO().scoreProperty().set("0");
     }
 
     protected Button getStartButton() {
@@ -66,11 +62,14 @@ public class HelloController {
     public void resetClicked(MouseEvent mouseEvent) {
     model.getPlayerX().scoreProperty().set("0");
     model.getPlayerO().scoreProperty().set("0");
+
     }
 
     public void startClicked(MouseEvent mouseEvent) {
     hideStartButton();
     model.setMessage("Player X's Turn");
+
+
     }
 
     public void buttonClickHandler(ActionEvent actionEvent) {
@@ -115,6 +114,7 @@ public class HelloController {
             break;
 
         }
+        model.isGameEnded();
         model.isGameDone();
 
     }
