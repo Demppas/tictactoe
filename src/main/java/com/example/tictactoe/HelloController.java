@@ -9,6 +9,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
+import java.util.Arrays;
+
 public class HelloController {
     @FXML private TextField heroScore;
     @FXML private TextField villainScore;
@@ -28,14 +30,16 @@ public class HelloController {
     @FXML private Button b9;
 
     protected Model model;
+
     public HelloController() {
         this.model = new Model();
+
     }
 
     public void initialize(){
         message.textProperty().bind(model.messageProperty());
-        heroScore.textProperty().bind(model.getPlayerX().scoreProperty());
-        villainScore.textProperty().bind(model.getPlayerO().scoreProperty());
+        heroScore.textProperty().bind(model.getPlayerOne().playerOneScoreProperty());
+        villainScore.textProperty().bind(model.getPlayerTwo().playerTwoScoreProperty());
         b1.textProperty().bind(model.gridButtonsProperty().get(0));
         b2.textProperty().bind(model.gridButtonsProperty().get(1));
         b3.textProperty().bind(model.gridButtonsProperty().get(2));
@@ -45,30 +49,35 @@ public class HelloController {
         b7.textProperty().bind(model.gridButtonsProperty().get(6));
         b8.textProperty().bind(model.gridButtonsProperty().get(7));
         b9.textProperty().bind(model.gridButtonsProperty().get(8));
-        model.getPlayerX().scoreProperty().set("0");
-        model.getPlayerO().scoreProperty().set("0");
+        model.getPlayerOne().playerOneScoreProperty().set("0");
+        model.getPlayerTwo().playerTwoScoreProperty().set("0");
+
     }
+
 
     protected Button getStartButton() {
         return startButton;
     }
 
-    public void showStartButton(){
-        startButton.setVisible(true);
-    }
-    public void hideStartButton(){
-        startButton.setVisible(false);
-    }
     public void resetClicked(MouseEvent mouseEvent) {
-    model.getPlayerX().scoreProperty().set("0");
-    model.getPlayerO().scoreProperty().set("0");
-
+        model.getPlayerOne().playerOneScoreProperty().set("0");
+        model.getPlayerTwo().playerTwoScoreProperty().set("0");
+        for (Button button : Arrays.asList(b1, b2, b3, b3 ,b4,b5, b6, b7, b8, b9)) {
+            button.setDisable(false);
+        }
+        model.hideButtonValues();
+        model.setPlayerTurn(0);
+        model.setCounter(0);
     }
 
     public void startClicked(MouseEvent mouseEvent) {
-    hideStartButton();
-    model.setMessage("Player X's Turn");
-
+        model.setMessage("Player X's Turn");
+        for (Button button : Arrays.asList(b1, b2, b3, b3 ,b4, b5, b6, b7, b8, b9)) {
+            button.setDisable(false);
+        }
+        model.hideButtonValues();
+        model.setPlayerTurn(0);
+        model.setCounter(0);
 
     }
 
@@ -114,11 +123,41 @@ public class HelloController {
             break;
 
         }
-        model.isGameEnded();
+        int i = model.computerMove();
+        i++;
+        String buttonName = String.format("b%d", i);
+        switch (buttonName) {
+            case "b1": buttonClicked = b1;
+                buttonClicked.setDisable(true);
+                break;
+            case "b2": buttonClicked = b2;
+                buttonClicked.setDisable(true);
+                break;
+            case "b3": buttonClicked = b3;
+                buttonClicked.setDisable(true);
+                break;
+            case "b4": buttonClicked = b4;
+                buttonClicked.setDisable(true);
+                break;
+            case "b5": buttonClicked = b5;
+                buttonClicked.setDisable(true);
+                break;
+            case "b6": buttonClicked = b6;
+                buttonClicked.setDisable(true);
+                break;
+            case "b7": buttonClicked = b7;
+                buttonClicked.setDisable(true);
+                break;
+            case "b8": buttonClicked = b8;
+                buttonClicked.setDisable(true);
+                break;
+            case "b9": buttonClicked = b9;
+                buttonClicked.setDisable(true);
+                break;}
+
         model.isGameDone();
-
+        model.updateCounter();
     }
-
 
 
 }
